@@ -87,6 +87,7 @@ def decodeSimpleTags( tag, value ):
         print('%s tag is not valid or not supported' % tag)
         return
     
+    tag_data = simpleTags[tag]
     print(tag)
     print(value)
     print(tag_data.name)
