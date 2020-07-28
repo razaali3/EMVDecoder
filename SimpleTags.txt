@@ -1,7 +1,7 @@
 ## Simple Tag details
 ## Below file format will be in the form of
 ##
-## Tag ID : Tag Description
+## Tag ID : Tag Description : Extra Description (if any required)
 ##
 
 42         :     Issuer Identification Number (IIN)
@@ -13,8 +13,8 @@
 5F20       :     Cardholder Name
 5F24       :     Application Expiration Date (YYMMDD)
 5F25       :     Application Effective Date (YYMMDD)
-5F28       :     Issuer Country Code (Visit https://en.wikipedia.org/wiki/ISO_3166-1_numeric for more info)
-5F2A       :     Transaction Currency Code (Visit https://en.wikipedia.org/wiki/ISO_3166-1_numeric for more info)
+5F28       :     Issuer Country Code
+5F2A       :     Transaction Currency Code
 5F2D       :     Language Preference
 5F30       :     Service Code
 5F34       :     PAN Sequence Number
@@ -43,6 +43,7 @@
 8A         :     Authorisation Response Code (ARC)
 8C         :     Card Risk Management Data Object List 1 (CDOL1)
 8D         :     Card Risk Management Data Object List 2 (CDOL2)
+8E         :     CVM List - Cardholder Verification Method List : Bitwise mapping functionality is not supported currently. Will be added in future releases.
 8F         :     Certification Authority Public Key Index (PKI)
 90         :     Issuer Public Key Certificate
 91         :     Issuer Authentication Data
@@ -64,6 +65,7 @@
 9F08       :     Application Version Number, Card
 9F09       :     Application Version Number, Terminal
 9F0B       :     Cardholder Name - Extended
+9F10       :     Issuer Application Data : Bitwise mapping functionality is not supported currently. Will be added in future releases.
 9F11       :     Issuer Code Table Index
 9F12       :     Application Preferred Name
 9F13       :     Last Online Application Transaction Counter (ATC) Register
@@ -72,7 +74,7 @@
 9F16       :     Merchant Identifier
 9F17       :     Personal Identification Number (PIN) Try Counter
 9F18       :     Issuer Script Identifier
-9F1A       :     Terminal Country Code (Visit https://en.wikipedia.org/wiki/ISO_3166-1_numeric for more info)
+9F1A       :     Terminal Country Code
 9F1B       :     Terminal Floor Limit
 9F1C       :     Terminal Identification
 9F1D       :     Terminal Risk Management Data
