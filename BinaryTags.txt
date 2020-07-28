@@ -27,3 +27,9 @@ TagSize				:   9
 
 ************************** End of Tag ABC **************************
 
+TagID 				:	9F34	 
+TagName 			:	CR
+TagDescription		:	CVM Results
+TagSize				:   6
+
+************************** End of Tag 9F34 *************************
