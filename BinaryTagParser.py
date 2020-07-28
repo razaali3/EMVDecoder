@@ -15,7 +15,6 @@ class BinaryTag():
 
 file1 = open("BinaryTags.txt","r+") 
 
-print ("Output of Readline function is ")
 lines = file1.readlines()
 
 tagID = ""
@@ -33,35 +32,22 @@ for line in lines:
 
         if ( keyStr == "TagID" ) :
             tagID = lineList[1].strip('\n\t ')
-            print(tagID)
         elif  ( keyStr == "TagName" ) :
             tagName = lineList[1].strip('\n\t ')
-            print(tagName)
         elif  ( keyStr == "TagDescription" ) :
             tagDescription = lineList[1].strip('\n\t ')
-            print(tagDescription)
         elif  ( keyStr == "TagSize" ) :
             tagSize = int(lineList[1].strip('\n\t '))
-            print(tagSize)
         else :
             hexaTagList = line.split(',')
             hexaCode = hexaTagList[0].strip('\n\t ')
             hexaCodeDesc = hexaTagList[1].strip('\n\t ')
-            #print( hexaCode, hexaCodeDesc )
             megahexaTagList.append(( int(hexaCode, 16), hexaCodeDesc ))
 
     elif ( line.find('*') == 0 ) :
         st = BinaryTag('','','',[])
         st.writeTagData(tagID, tagName, tagDescription, tagSize, megahexaTagList.copy() )
         megahexaTagList.clear()
-        
-
-print ("******************")
-tagID = "98"
-tag_data = binaryTags[tagID]
-print(tagID, tag_data.name)
-print(tagID, tag_data.field_length)
-print(tagID, tag_data.bit_list)
 
 file1.seek(0) 
 file1.close()
