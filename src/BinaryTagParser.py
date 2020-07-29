@@ -4,11 +4,11 @@
 binaryTags = {}
 
 class BinaryTag():
-    def __init__(self, acronym, name, field_length, bit_list):
+    def __init__(self, acronym, name, fieldLength, bitList):
         self.acronym = acronym
         self.name = name
-        self.field_length = field_length
-        self.bit_list = bit_list
+        self.fieldLength = fieldLength
+        self.bitList = bitList
 
     def writeTagData(self, tagID, tagName, tagDescription, tagSize, bitList ):
         binaryTags[tagID] = BinaryTag( tagName, tagDescription, tagSize, bitList )
@@ -23,7 +23,7 @@ tagDescription = ""
 tagSize = 0
 hexaCode = ""
 hexaCodeDesc = ""
-megahexaTagList = []
+megaHexaTagList = []
 
 for line in lines:
     if ( ( line.isspace() == False ) and ( line.find('*') == -1 ) and ( line.find('#') == -1 ) and ( line.find('/') == -1 )) :
@@ -42,12 +42,12 @@ for line in lines:
             hexaTagList = line.split(',')
             hexaCode = hexaTagList[0].strip('\n\t ')
             hexaCodeDesc = hexaTagList[1].strip('\n\t ')
-            megahexaTagList.append(( int(hexaCode, 16), hexaCodeDesc ))
+            megaHexaTagList.append(( int(hexaCode, 16), hexaCodeDesc ))
 
     elif ( line.find('*') == 0 ) :
         st = BinaryTag('','','',[])
-        st.writeTagData(tagID, tagName, tagDescription, tagSize, megahexaTagList.copy() )
-        megahexaTagList.clear()
+        st.writeTagData(tagID, tagName, tagDescription, tagSize, megaHexaTagList.copy() )
+        megaHexaTagList.clear()
 
 file1.seek(0) 
 file1.close()
