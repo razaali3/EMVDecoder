@@ -8,38 +8,38 @@ def decodeSimpleTags( tag, value ):
     if tag not in simpleTags:
         return [value, '', '%s tag is not valid or not supported' %tag]
 
-    tag_data = simpleTags[tag]
+    tagData = simpleTags[tag]
 
-    setValues = [value, tag_data.name]
+    setValues = [value, tagData.name]
 
-    if tag_data.desc != '':
-        setValues.append( tag_data.desc )
+    if tagData.desc != '':
+        setValues.append( tagData.desc )
 
     return setValues
     
 def decodeBinaryTags( tag, value ):
     
-    tag_data = binaryTags[tag]
+    tagData = binaryTags[tag]
     errors = isValidValue(tag, value)
     if len(errors) != 0:
-        return [value, tag_data.name, errors]
+        return [value, tagData.name, errors]
 
-    set_bits = []
+    setBits = []
     
-    int_value = int(value, 16)
-    for bit in tag_data.bit_list:
-        if int_value & bit[0] == bit[0]:
-            set_bits.append( ('%0' + str(tag_data.field_length) + 'X' + ' ' + bit[1] ) % bit[0] )
+    intValue = int(value, 16)
+    for bit in tagData.bitList:
+        if intValue & bit[0] == bit[0]:
+            setBits.append( ('%0' + str(tagData.fieldLength) + 'X' + ' ' + bit[1] ) % bit[0] )
         
-    return [value, tag_data.name, set_bits]
+    return [value, tagData.name, setBits]
 
 def decodeTag9F34(tag, value):
 
-    tag_data = binaryTags[tag]
+    tagData = binaryTags[tag]
 
     errors = isValidValue( tag, value )
     if len(errors) != 0:
-        return [value, tag_data.name, errors]
+        return [value, tagData.name, errors]
     
 
     tag9F34Byte1 = {
@@ -64,7 +64,7 @@ def decodeTag9F34(tag, value):
 
     tag9F34Byte3 = {
         '01': '01 Failed',
-        '02': '02 Sucessful'
+        '02': '02 Successful'
     }
     setValues = []
     
@@ -72,42 +72,43 @@ def decodeTag9F34(tag, value):
     setValues.append( tag9F34Byte2.get( value[2:4], value[2:4] + ' Unknown') )
     setValues.append( tag9F34Byte3.get( value[4:6], value[4:6] + ' Unknown') )
 
-    return [value, tag_data.name, setValues]
+    return [value, tagData.name, setValues]
 
 def decodeTags( inputList ):
-    super_set_bits = {}
+    superSetBits = {}
     for x in inputList:
         tag = x[0]
         value = x[1]
         tag = tag.upper()
 
         if tag == '9F34':
-            super_set_bits[tag] = decodeTag9F34( tag, value )
+            superSetBits[tag] = decodeTag9F34( tag, value )
             continue
 
         if tag not in binaryTags:
             tagInfoStr = decodeSimpleTags( tag, value )
-            super_set_bits[tag] = tagInfoStr
+            superSetBits[tag] = tagInfoStr
             continue
         
         tagInfoList = decodeBinaryTags( tag, value )
-        super_set_bits[tag] = tagInfoList
+        superSetBits[tag] = tagInfoList
         continue
 
-    print(super_set_bits)
+    return superSetBits
     
     
 def isValidValue(tag, value):
-    tag_data = binaryTags[tag]
-    if tag_data != None and len(value) != tag_data.field_length:
-        return '%s must be exactly %d characters long' % (tag, tag_data.field_length)
+    tagData = binaryTags[tag]
+    if tagData != None and len(value) != tagData.fieldLength:
+        return '%s must be exactly %d characters long' % (tag, tagData.fieldLength)
     if not re.match('^[0-9a-fA-F]+$', value):
         return '%s must contain only hexadecimal characters. ie 0-9 and A-F.' % tag
     return ()
 
 def main():
     inputList = [('9F33', 'E0F0C0'), ('57', 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'), ('95', 'FFFFFFFFFF'), ('5F2A', '0978'), ('82', '2000'), ('9F34', '1F0002'), ('8E', '00000000000000004201410342031E031F00')]
-    decodeTags(inputList)
+    result = decodeTags(inputList)
+    print(result)
 
 if __name__ == "__main__":
     main()
