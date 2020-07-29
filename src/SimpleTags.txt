@@ -43,7 +43,7 @@
 8A         :     Authorisation Response Code (ARC)
 8C         :     Card Risk Management Data Object List 1 (CDOL1)
 8D         :     Card Risk Management Data Object List 2 (CDOL2)
-8E         :     CVM List - Cardholder Verification Method List : Bitwise mapping functionality is not supported currently. Will be added in future releases.
+8E         :     CVM List - Cardholder Verification Method List : Bitwise mapping functionality for this tag is not supported currently. Will be added in future releases.
 8F         :     Certification Authority Public Key Index (PKI)
 90         :     Issuer Public Key Certificate
 91         :     Issuer Authentication Data
@@ -65,7 +65,7 @@
 9F08       :     Application Version Number, Card
 9F09       :     Application Version Number, Terminal
 9F0B       :     Cardholder Name - Extended
-9F10       :     Issuer Application Data : Bitwise mapping functionality is not supported currently. Will be added in future releases.
+9F10       :     Issuer Application Data : Bitwise mapping functionality for this tag is not supported currently. Will be added in future releases.
 9F11       :     Issuer Code Table Index
 9F12       :     Application Preferred Name
 9F13       :     Last Online Application Transaction Counter (ATC) Register
@@ -114,15 +114,15 @@
 9F4D       :     Log Entry
 9F4E       :     Merchant Name and Location
 9F4F       :     Log Format
-9F53       :     Consecutive Transaction Counter International Limit (CTCIL) / Transaction Category Code / Terminal Interchange Profile (dynamic)
+9F53       :     Transaction Category Code
 9F5B       :     Issuer Script Results
-9F67       :     MSD Offset / NATC (Track2)
+9F67       :     MSD Offset (or) NATC (Track2)
 9F6C       :     Card Transaction Qualifiers (CTQ)
-9F6D       :     Mag-stripe Application Version Number (Reader) / Kernel 4 Reader Capabilities
-9F6E       :     Third Party Data / Form Factor Indicator
-9F70       :     Protected Data Envelope 1 / Card Interface Capabilities
-9F71       :     Protected Data Envelope 2 / Mobile CVM Results
-9F7C       :     Customer Exclusive Data (CED) / Merchant Custom Data
+9F6D       :     Mag-stripe Application Version Number (Reader) (or) Kernel 4 Reader Capabilities
+9F6E       :     Third Party Data (or) Form Factor Indicator
+9F70       :     Protected Data Envelope 1 (or) Card Interface Capabilities
+9F71       :     Protected Data Envelope 2 (or) Mobile CVM Results
+9F7C       :     Customer Exclusive Data (CED) (or) Merchant Custom Data
 A5         :     File Control Information (FCI) Proprietary Template
 BF0C       :     File Control Information (FCI) Issuer Discretionary Data
 DF30       :     Fuel Card usage bitmap
